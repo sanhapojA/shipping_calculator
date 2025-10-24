@@ -1,17 +1,15 @@
 package domain
 
-import "time"
-
 // // Shipment represents a shipment order with all relevant details for fee calculation
-type Shipment struct {
-	Weight       float64        // Weight in kilograms
-	Distance     float64        // Distance in kilometers
-	DeliveryType DeliveryType   // Type of delivery service
-	OrderAmount  float64        // Total order amount in THB
-	PromoCode    string         // Promotion code (optional)
-	Membership   MembershipTier // Customer membership tier
-	CreatedAt    time.Time      // When the shipment was created
-}
+// type Shipment struct {
+// 	Weight       float64        // Weight in kilograms
+// 	Distance     float64        // Distance in kilometers
+// 	DeliveryType DeliveryType   // Type of delivery service
+// 	OrderAmount  float64        // Total order amount in THB
+// 	PromoCode    string         // Promotion code (optional)
+// 	Membership   MembershipTier // Customer membership tier
+// 	CreatedAt    time.Time      // When the shipment was created
+// }
 
 // // NewShipment creates a new Shipment with validation
 // func NewShipment(weight, distance float64, deliveryType DeliveryType) (*Shipment, error) {
