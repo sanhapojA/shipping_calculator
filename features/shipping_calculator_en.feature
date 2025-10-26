@@ -1,4 +1,3 @@
-# language: en
 Feature: Shipping Fee Calculator
   As a customer
   I want to know the shipping fee before placing an order
