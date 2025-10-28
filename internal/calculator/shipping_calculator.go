@@ -11,15 +11,16 @@ func NewShippingCalculator() *ShippingCalculator {
 func (c *ShippingCalculator) Calculate(shipment *domain.Shipment) (float64, error) {
 	weight := shipment.Weight
 
-	if weight > 0 && weight <= 1 {
+	switch {
+	case weight > 0 && weight <= 1:
 		return 30.0, nil
-	} else if weight > 1 && weight <= 5 {
+	case weight > 1 && weight <= 5:
 		return 50.0, nil
-	} else if weight > 5 && weight <= 10 {
+	case weight > 5 && weight <= 10:
 		return 80.0, nil
-	} else if weight > 10 {
-		return 80.0 + ((weight - 10) * 10), nil
+	case weight > 10:
+		return 80.0 + (weight-10)*10, nil
+	default:
+		return 0, nil
 	}
-
-	return 0, nil
 }
