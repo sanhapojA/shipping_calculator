@@ -14,7 +14,6 @@ func (c *ShippingCalculator) Calculate(shipment *domain.Shipment) (float64, erro
 	weight := shipment.Weight
 	distance := shipment.Distance
 
-	// 1) compute base fee from weight
 	var baseFee float64
 	switch {
 	case weight > 0 && weight <= 1:
@@ -26,10 +25,9 @@ func (c *ShippingCalculator) Calculate(shipment *domain.Shipment) (float64, erro
 	case weight > 10:
 		baseFee = 80.0 + (weight-10.0)*10.0
 	default:
-		return 0, nil
+		return 0, domain.ErrWeightInvalid
 	}
 
-	// 2) compute distance multiplier: 0-99km -> 1.0, 100-199 -> 1.5, 200-299 -> 2.0, ...
 	multiplier := 1.0
 	if distance > 0 && distance <= 50 {
 		multiplier = 1.0
