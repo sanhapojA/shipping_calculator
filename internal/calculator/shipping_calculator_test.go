@@ -81,6 +81,19 @@ func TestWeightBasedPricing(t *testing.T) {
 		assert.Equal(t, 130.0, fee)
 	})
 
+	t.Run("error weight < 0", func(t *testing.T) {
+		calc := NewShippingCalculator()
+		shipment := &domain.Shipment{
+			Weight:       -10.0,
+			Distance:     30,
+			DeliveryType: domain.DeliveryTypeStandard,
+		}
+
+		_, err := calc.Calculate(shipment)
+		assert.Error(t, err)
+		assert.ErrorContains(t, err, domain.ErrWeightInvalid.Error())
+	})
+
 }
 
 func TestShippingFeeCalculator(t *testing.T) {
